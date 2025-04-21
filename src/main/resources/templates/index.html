@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wall Connector AI</title>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+  </head>
+  <body hx-boost="true">
+    <h1>Welcome to Wall Connector AI</h1>
+    <main>
+      <form method="post" th:action="@{/chat}">
+        <label for="user-input">Type your message:</label>
+        <textarea
+          id="user-input"
+          name="user-input"
+          rows="4"
+          cols="50"
+          required
+        ></textarea>
+        <button th:hx-post="@{/chat}" hx-target="#response" hx-swap="outerHTML">
+          Chat
+        </button>
+      </form>
+
+      <p th:fragment="response" id="response" th:text="${response}"></p>
+    </main>
+    <footer>
+      <p>&copy; 2025 Wall Connector AI</p>
+    </footer>
+  </body>
+</html>
